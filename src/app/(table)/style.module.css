@@ -1,0 +1,77 @@
+.layout {
+    height: auto;
+    overflow-x: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.table {
+    height: 95vh;
+    margin-left: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.tableleft {
+    position: fixed;
+    left: 0;
+}
+
+.tableRight {
+    position: fixed;
+    right: 0;
+}
+
+.tableleft th {
+    width: 150px;
+    padding: 10px 10px;
+    text-wrap: nowrap;
+    height: 15px;
+    background-color: aqua;
+    border-collapse: collapse;
+}
+
+.table th {
+    width: 150px;
+    min-width: 150px;
+    padding: 10px 10px;
+    height: 15px;
+    margin-left: 500px;
+    text-wrap: nowrap;
+    background-color: rgb(180, 165, 165);
+}
+
+.table table {
+    margin-left: 24.5%;
+}
+
+.tableRight th {
+    width: 100px;
+    height: 15px;
+    padding: 10px 10px;
+    text-wrap: nowrap;
+    background-color: rgb(247, 9, 29);
+}
+
+.tableRight td {
+    width: 100px;
+    max-height: 15px;
+    padding: 10px 10px;
+    text-wrap: nowrap;
+    background-color: rgb(196, 188, 189);
+}
+
+.tableRight button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 5px;
+}
+
+
+.tableRight button img {
+    display: inline-block;
+}
