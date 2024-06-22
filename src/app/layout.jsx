@@ -1,4 +1,4 @@
-
+import styles from '@/app/(table)/style.module.css'
 
 export const metadata = {
   title: 'Create Next App',
@@ -9,7 +9,7 @@ const RootLayout = ({ children }) => {
   return (
     <html >
       <body>
-        <div>
+        <div className={styles.homePage}>
           {children}
         </div>
       </body>

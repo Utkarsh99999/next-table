@@ -4,7 +4,12 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    width: 1350px;
+}
+
+.homePage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .table {
@@ -48,14 +53,14 @@
 .table th, .table td {
     width: 150px;
     min-width: 150px;
-    padding: 10px;
     height: 40px;
+    padding: 10px;
     background-color: rgb(180, 165, 165);
     border: 1px solid #ddd;
 }
 
 .table table {
-    margin-left: 24.5%;
+    margin-left: 60%;
 }
 
 .table tr {
