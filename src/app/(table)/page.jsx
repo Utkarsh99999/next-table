@@ -40,9 +40,8 @@ const MyTable = () => {
 
   return (
     <div className={styles.layout}>
-
       <div className={styles.tableleft}>
-        <table >
+        <table>
           <thead>
             <tr>
               <th>Agent Name</th>
@@ -65,26 +64,33 @@ const MyTable = () => {
       </div>
 
       <Table
-        data={data}
+        data={editedData}
         isEditing={isEditing}
         handleChange={handleChange}
       />
 
-      <table className={styles.tableRight}>
-        <thead>
-          <tr>
-            <th>Edit</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <button onClick={handleEdit}><img src="/edit.png" alt="edit" height={20} width={20} /></button>
-              <button onClick={handleSave}><img src="/save.png" alt="save" height={20} width={20} /></button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div className={styles.tableright}>
+        <table>
+          <thead>
+            <tr>
+              <th>Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item, index) => (
+              <tr key={item.id}>
+                <td>
+                  {isEditing ? (
+                    <button onClick={handleSave}><img src="/save.png" alt="save" height={20} width={20} /></button>
+                  ) : (
+                    <button onClick={handleEdit}><img src="/edit.png" alt="edit" height={20} width={20} /></button>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

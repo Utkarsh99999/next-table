@@ -1,8 +1,7 @@
-// MyTable.js
 import React from 'react';
 import styles from '@/app/(table)/style.module.css';
 
-const MyTable = ({ data, isEditing, handleChange }) => {
+const Table = ({ data, isEditing, handleChange }) => {
     return (
         <div className={styles.table}>
             <table>
@@ -81,4 +80,4 @@ const MyTable = ({ data, isEditing, handleChange }) => {
     );
 };
 
-export default MyTable;
+export default Table;
