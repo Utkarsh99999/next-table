@@ -10,6 +10,7 @@
     height: 95vh;
     margin-left: auto;
     display: flex;
+    overflow-y: hidden;
     align-items: flex-start;
     justify-content: space-between;
 }
@@ -17,6 +18,8 @@
 .tableleft {
     position: fixed;
     left: 0;
+    width: 50%;
+    overflow-y: auto;
 }
 
 .tableRight {
@@ -24,42 +27,47 @@
     right: 0;
 }
 
-.tableleft th {
+.tableleft th, .tableleft td {
     width: 150px;
-    padding: 10px 10px;
+    padding: 10px;
     text-wrap: nowrap;
-    height: 15px;
+    height: 24.5px;
     background-color: aqua;
     border-collapse: collapse;
+    border: 1px solid #ddd;
 }
 
-.table th {
+.tableleft tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.table th, .table td {
     width: 150px;
     min-width: 150px;
-    padding: 10px 10px;
-    height: 15px;
-    margin-left: 500px;
-    text-wrap: nowrap;
+    padding: 10px;
+    height: 40px;
     background-color: rgb(180, 165, 165);
+    border: 1px solid #ddd;
 }
 
 .table table {
-    margin-left: 24.5%;
+    margin-left: 37%;
 }
 
-.tableRight th {
+.table tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.tableRight th, .tableRight td {
     width: 100px;
-    height: 15px;
-    padding: 10px 10px;
+    height: 40px;
+    padding: 10px;
     text-wrap: nowrap;
     background-color: rgb(247, 9, 29);
+    border: 1px solid #ddd;
 }
 
 .tableRight td {
-    width: 100px;
-    max-height: 15px;
-    padding: 10px 10px;
-    text-wrap: nowrap;
     background-color: rgb(196, 188, 189);
 }
 
@@ -70,7 +78,6 @@
     padding: 0;
     margin-right: 5px;
 }
-
 
 .tableRight button img {
     display: inline-block;

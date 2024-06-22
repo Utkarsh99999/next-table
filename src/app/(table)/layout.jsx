@@ -1,4 +1,3 @@
-import styles from '@/app/(table)/style.module.css'
 
 export const metadata = {
     title: 'Create Next App',
@@ -8,36 +7,8 @@ export const metadata = {
 const tableLayout = ({ children }) => {
 
     return (
-        <div className={styles.layout}>
-            <table className={styles.tableleft}>
-                <thead>
-                    <tr>
-                        <th>Agent Name</th>
-                        <th>Agent Phone Number</th>
-                        <th>date of lead created</th>
-                        <th>Lead Source</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+        <div>
             {children}
-            <table className={styles.tableRight}>
-                <thead>
-                    <tr>
-                        <th>Edit</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <button><img src="/delete.png" alt="delete" height={20} width={20} /></button>
-                            <button><img src="/edit.png" alt="edit" height={20} width={20} /></button>
-
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
     );
 };
