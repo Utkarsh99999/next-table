@@ -1,14 +1,17 @@
 "use client"
-
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from '@/app/style.module.css';
+import AlertBox from '@/component/Alert';
 
 const MyTable = () => {
     const [data, setData] = useState([]);
     const [editedData, setEditedData] = useState([]);
-    const [isEditing, setIsEditing] = useState(false);
+    const [saved, setSaved] = useState(false);
+    const [editingRowIndex, setEditingRowIndex] = useState(null);
+    // const BaseUrl = 'http://localhost:3000';
+    const BaseUrl = 'https://node-test-server-lac.vercel.app';
+
 
     useEffect(() => {
         fetchData();
@@ -16,22 +19,27 @@ const MyTable = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('https://jsonplaceholder.typicode.com/users');
-            const fetchedData = response.data.slice(0, 50); // Limiting to 50 items for demo
-            setData(fetchedData);
-            setEditedData([...fetchedData]);
+            const response = await axios.get(`${BaseUrl}/users`);
+            setData(response.data.users);
+            setEditedData(response.data.users);
         } catch (error) {
-            console.error("Error fetching data", error);
+            console.error('Error fetching data', error);
         }
     };
 
-    const handleEdit = () => {
-        setIsEditing(true);
+    const handleEdit = (index) => {
+        setEditingRowIndex(index);
     };
 
-    const handleSave = () => {
-        console.log("Data saved:", editedData);
-        setIsEditing(false);
+    const handleSave = async (_id) => {
+        try {
+            const data = editedData.filter((val) => val._id === _id)
+            const response = await axios.post(`${BaseUrl}/update/user`, data[0]);
+            setSaved(response.data.status);
+        } catch (error) {
+            console.error('Error fetching data', error);
+        }
+        setEditingRowIndex(null);
     };
 
     const handleChange = (index, key, value) => {
@@ -40,15 +48,16 @@ const MyTable = () => {
         setEditedData(updatedData);
     };
 
-    const columns = Object.keys(data.length > 0 ? data[0] : {}).slice(0, 10); // Take first 10 keys dynamically
+    const columns = Object.keys(data.length > 0 ? data[0] : {});
 
     return (
         <div className={styles.div1}>
+            <AlertBox isVisible={saved} onClose={setSaved} />
             <table className={styles.table}>
                 <thead>
                     <tr>
                         {columns.map((column, index) => (
-                            <th key={index}>{column}</th>
+                            <th key={`${index}3453`}>{column}</th>
                         ))}
                         <th>Edit</th>
                     </tr>
@@ -58,7 +67,7 @@ const MyTable = () => {
                         <tr key={item.id}>
                             {columns.map((column, colIndex) => (
                                 <td key={`${index}-${colIndex}`}>
-                                    {isEditing ? (
+                                    {editingRowIndex === index && colIndex > 1 ? (
                                         <input
                                             type="text"
                                             value={editedData[index][column]}
@@ -70,12 +79,12 @@ const MyTable = () => {
                                 </td>
                             ))}
                             <td>
-                                {isEditing ? (
-                                    <button className={styles.button} onClick={handleSave}>
+                                {editingRowIndex === index ? (
+                                    <button className={styles.button} onClick={() => handleSave(item._id)}>
                                         <img src="/save.png" alt="save" height={20} width={20} />
                                     </button>
                                 ) : (
-                                    <button className={styles.button} onClick={handleEdit}>
+                                    <button className={styles.button} onClick={() => handleEdit(index)}>
                                         <img src="/edit.png" alt="edit" height={20} width={20} />
                                     </button>
                                 )}
@@ -85,9 +94,8 @@ const MyTable = () => {
                 </tbody>
             </table>
         </div>
+
     );
 };
 
 export default MyTable;
-
-
