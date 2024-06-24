@@ -20,7 +20,7 @@
     min-width: 80px;
     position: sticky;
     top: 0;
-    background: #727272;
+    background: #1c9288;
     color: #e0e0e0;
     font-weight: normal;
 }
@@ -30,8 +30,25 @@
     border-right: 1px solid #bbbbbb;
     border-bottom: 1px solid #bbbbbb;
     padding: 5px;
+    background: #87a3ff;
     width: 80px;
     min-width: 80px;
+}
+
+.button{
+    cursor: pointer;
+    background-color: inherit;
+    margin-left: 5px;
+    border-radius: 4px;
+    border: none;
+}
+
+.button img {
+    filter: invert();
+}
+
+.button :hover {
+  scale: 1.1;
 }
 
 .div1 td:nth-child(1),
@@ -42,6 +59,7 @@
 .div1 th:nth-child(1),
 .div1 th:nth-child(2) {
     z-index: 2;
+    background-color: #8f2e80;
 }
 
 .div1 table {
@@ -64,11 +82,18 @@
     min-width: 150px;
 }
 
-.div1 th:last-child,
 .div1 td:last-child {
     position: sticky;
     right: 0;
-    background: #727272;
+    background: #ca5e9a;
+    color: #e0e0e0;
+    font-weight: normal;
+}
+
+.div1 th:last-child {
+    position: sticky;
+    right: 0;
+    background: #e01414;
     color: #e0e0e0;
     font-weight: normal;
 }

@@ -18,7 +18,13 @@ const MyTable = () => {
 
     useEffect(() => {
         fetchData();
+    }, []);
+
+
+    useEffect(() => {
+        console.log("=====saved=====", saved)
     }, [saved]);
+
 
     const fetchData = async () => {
         try {
@@ -68,57 +74,58 @@ const MyTable = () => {
         return (
             <SkeletonTable />
         )
+    } else {
+        return (
+            <div className={styles.div1}>
+                <AlertBox isVisible={saved} setSaved={setSaved} />
+                <table className={styles.table}>
+                    <thead>
+                        <tr>
+                            {columns.map((column, index) => (
+                                <th key={`${index}3453`}>{column}</th>
+                            ))}
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {editedData.map((item, index) => (
+                            <tr key={item.id}>
+                                {columns.map((column, colIndex) => (
+                                    <td key={`${index}-${colIndex}`}>
+                                        {editingRowIndex === index && colIndex > 1 ? (
+                                            <input
+                                                type="text"
+                                                value={editedData[index][column]}
+                                                onChange={(e) => handleChange(index, column, e.target.value)}
+                                            />
+                                        ) : (
+                                            editedData[index][column]
+                                        )}
+                                    </td>
+                                ))}
+                                <td>
+                                    {editingRowIndex === index ? (
+                                        <button className={styles.button} onClick={() => handleSave(item._id)}>
+                                            <img src="/save.png" alt="save" height={20} width={20} />
+                                        </button>
+                                    ) : (
+                                        <button className={styles.button} onClick={() => handleEdit(index)}>
+                                            <img src="/edit.png" alt="edit" height={20} width={20} />
+                                        </button>
+                                    )}
+                                    <button className={styles.button} onClick={() => handleDelete(item._id)}>
+                                        <img src="/delete.png" alt="edit" height={20} width={20} />
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        );
     }
 
-    return (
-        <div className={styles.div1}>
-            <AlertBox isVisible={saved} onClose={setSaved} />
-            <table className={styles.table}>
-                <thead>
-                    <tr>
-                        {columns.map((column, index) => (
-                            <th key={`${index}3453`}>{column}</th>
-                        ))}
-                        <th>Edit</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {editedData.map((item, index) => (
-                        <tr key={item.id}>
-                            {columns.map((column, colIndex) => (
-                                <td key={`${index}-${colIndex}`}>
-                                    {editingRowIndex === index && colIndex > 1 ? (
-                                        <input
-                                            type="text"
-                                            value={editedData[index][column]}
-                                            onChange={(e) => handleChange(index, column, e.target.value)}
-                                        />
-                                    ) : (
-                                        editedData[index][column]
-                                    )}
-                                </td>
-                            ))}
-                            <td>
-                                {editingRowIndex === index ? (
-                                    <button className={styles.button} onClick={() => handleSave(item._id)}>
-                                        <img src="/save.png" alt="save" height={20} width={20} />
-                                    </button>
-                                ) : (
-                                    <button className={styles.button} onClick={() => handleEdit(index)}>
-                                        <img src="/edit.png" alt="edit" height={20} width={20} />
-                                    </button>
-                                )}
-                                <button className={styles.button} onClick={() => handleDelete(item._id)}>
-                                    <img src="/delete.png" alt="edit" height={20} width={20} />
-                                </button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
 
-    );
 };
 
 export default MyTable;

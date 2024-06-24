@@ -2,75 +2,21 @@
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 1000;
-    background: radial-gradient(circle, rgb(190, 83, 164) 0%, rgb(212, 0, 255) 100%);
+    z-index: 50;
+    background-color: #ae00ff;
     width: 250px;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    display: flex;
     height: 50px;
-    overflow-y: auto;
-    border: 1px solid #000000;
-    box-shadow: 0 2px 4px rgba(207, 147, 147, 0.1);
+    border-radius: 5px 5px 0px 5px;
     border-radius: 8px;
     padding: 5px 12px;
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    display: none;
 }
 
-.alertContainer.show {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.alertHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-}
-
-.alertClose {
-    cursor: pointer;
-    font-size: 18px;
-    color: #777;
-}
-
-.alertClose:hover {
-    color: #333;
-    /* Darken color on hover */
-}
-
-.alertContent {
-    margin-bottom: 8px;
-    max-height: 120px;
-    overflow-y: auto;
-}
-
-.alertButtons {
-    text-align: right;
-}
-
-.alertButtons button {
-    margin-left: 8px;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    outline: none;
-    transition: background-color 0.3s ease;
-}
-
-.alertButtons button.cancel {
-    background-color: #ccc;
-    color: #333;
-}
-
-.alertButtons button.save {
-    background-color: #007bff;
-    color: #fff;
-}
-
-.alertButtons button:hover {
-    opacity: 0.8;
+.alertClose{
+  color: aliceblue;
+  height: 10px;
+  width: 10px;
 }
