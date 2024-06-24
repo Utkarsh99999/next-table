@@ -64,23 +64,6 @@
     min-width: 150px;
 }
 
-.div1 th:nth-child(1),
-.div1 td:nth-child(1) {
-    position: sticky;
-    left: 0;
-    width: 150px;
-    min-width: 150px;
-}
-
-.div1 th:nth-child(2),
-.div1 td:nth-child(2) {
-    position: sticky;
-    left: 161px;
-    width: 150px;
-    min-width: 150px;
-}
-
-
 .div1 th:last-child,
 .div1 td:last-child {
     position: sticky;
