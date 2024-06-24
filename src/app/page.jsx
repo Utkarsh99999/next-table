@@ -43,7 +43,6 @@ const MyTable = () => {
         } catch (error) {
             console.error('Error fetching data', error);
         }
-        // setEditingRowIndex(null);
     };
 
     const handleSave = async (_id) => {
